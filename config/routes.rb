@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :boards
       resources :board_items
       resources :items
+      resources :sessions
     end
   end
 end
