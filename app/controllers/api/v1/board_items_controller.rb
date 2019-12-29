@@ -11,7 +11,7 @@ class Api::V1::BoardItemsController < ApplicationController
 
     def create
         board_item = BoardItem.create(board_item_params)
-        render json: board_item
+        render json: board_item, include: ['item']
     end
 
     def destroy
