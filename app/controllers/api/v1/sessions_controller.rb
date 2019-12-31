@@ -5,7 +5,8 @@ class Api::V1::SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: session[:user_id]
         else
-            render json: "Not working"
+            flash[:error] = user.errors.full_messages
+            render json: {error: flash[:error]}
         end
     end
   
