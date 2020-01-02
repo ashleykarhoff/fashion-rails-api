@@ -9,8 +9,7 @@ class Api::V1::SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: session[:user_id]
         else
-            flash[:error] = user.errors.full_messages
-            render json: {error: flash[:error]}
+            render json: {error: 'Email and password do not match'}
         end
     end
   
