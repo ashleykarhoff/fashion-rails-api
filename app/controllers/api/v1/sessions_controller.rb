@@ -1,4 +1,8 @@
 class Api::V1::SessionsController < ApplicationController
+
+    def new
+    end
+    
     def create
         user = User.find_by_email(params[:email])
         if user && user.authenticate(params[:password])
@@ -12,6 +16,11 @@ class Api::V1::SessionsController < ApplicationController
   
     def destroy
         session[:user_id] = nil
-        render json: "Destroyed"
+
+        if session[:user_id] = nil
+            render json: {message: "Destroyed"}
+        else
+            render json: {message: "Hmmm, that didn't work"}
+        end
     end
 end
